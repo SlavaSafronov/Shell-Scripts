@@ -1,6 +1,11 @@
 
 #!/bin/bash
 
+# Simple linux script that checks the external ip address, compares it to a saved version 
+# or saves it in a txt file (if there's no saved version), and sends it to the provided email address.
+#   note - installed outgoing mail service needed 
+
+
 now=$(date)
 location="/tmp/myip"
 mkdir -p $location
@@ -40,6 +45,6 @@ else
     echo "$my_addr" > "${current_address}"
     echo "Address updated. Sending email." >> ${log}
     # need to send an email
-    echo "Mom IP Adddress has changed. New address is ${my_addr}" |mail mymail@gmail.com
+    echo "IP Adddress has changed. New address is ${my_addr}" |mail mymail@gmail.com
     echo "Email has been sent." >> ${log}
 fi
